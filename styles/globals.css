@@ -1,25 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* html,
+html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-} */
+}
 
 * {
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
-/* 
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -27,35 +22,5 @@ a {
   body {
     color: white;
     background: black;
-  }
-} */
-
-@layer components {
-  .animation {
-    @apply transition-all duration-200 ease-in-out;
-  }
-
-  .primary-btn {
-    @apply rounded bg-blue-500 px-4 py-2 font-bold text-white hover:opacity-80;
-  }
-
-  .secondary-btn {
-    @apply rounded bg-gray-500 px-4 py-2 font-bold text-white;
-  }
-
-  .success-btn {
-    @apply rounded bg-green-500 px-4 py-2 font-bold text-white;
-  }
-
-  .danger-btn {
-    @apply rounded bg-red-500 px-4 py-2 font-bold text-white;
-  }
-
-  .warning-btn {
-    @apply rounded bg-yellow-500 px-4 py-2 font-bold text-white;
-  }
-
-  .info-btn {
-    @apply rounded bg-blue-500 px-4 py-2 font-bold text-white;
   }
 }
