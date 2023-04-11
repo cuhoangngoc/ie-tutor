@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Layout from '../components/Layout/Layout';
 import styles from '../styles/Home.module.css';
 
+Home.title = 'Home';
+
 export default function Home() {
   return (
     <Layout>

@@ -1,6 +1,8 @@
 import { FaFacebook, FaYoutube } from 'react-icons/fa';
-import Link from 'next/link';
 import { Footer } from 'flowbite-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import logo from '../../public/imgs/logo/logo-100.png';
 
 const AppFooter = () => {
   const navLinks = [
@@ -65,9 +67,11 @@ const AppFooter = () => {
             <div>
               <Link href="/" legacyBehavior>
                 <a className="flex">
-                  <img
-                    src="https://flowbite.com/docs/images/logo.svg"
-                    className="mr-3 h-6 sm:h-9"
+                  <Image
+                    src={logo.src}
+                    width={70}
+                    height={70}
+                    className="mr-3"
                     alt="IE Tutor Logo"
                   />
                   <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">

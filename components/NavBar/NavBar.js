@@ -1,5 +1,8 @@
 import { Navbar } from 'flowbite-react';
+import Image from 'next/image';
 import Link from 'next/link';
+import logo from '../../public/imgs/logo/logo-100.png';
+
 const NavBar = () => {
   const navLinks = [
     {
@@ -11,8 +14,8 @@ const NavBar = () => {
       path: '/find-tutors',
     },
     {
-      title: 'About',
-      path: '/about',
+      title: 'How it work',
+      path: '/how-it-work',
     },
     {
       title: 'Contact',
@@ -24,9 +27,11 @@ const NavBar = () => {
     <Navbar fluid={true} rounded={true} className="mb-[2rem] shadow-lg">
       <Link href="/" legacyBehavior>
         <a className="flex">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="mr-3 h-6 sm:h-9"
+          <Image
+            src={logo.src}
+            className="mr-3"
+            width={70}
+            height={70}
             alt="IE Tutor Logo"
           />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
@@ -45,7 +50,11 @@ const NavBar = () => {
       </div>
       <Navbar.Collapse>
         {navLinks.map(({ title, path }, index) => (
-          <Link key={index} href={path} className="text-[1rem]">
+          <Link
+            key={index}
+            href={path}
+            className="text-[1rem] hover:text-blue-500"
+          >
             {title}
           </Link>
         ))}
