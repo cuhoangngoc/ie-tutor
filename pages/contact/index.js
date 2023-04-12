@@ -104,7 +104,6 @@ export default function Contact() {
         </h1>
         <iframe
           className="h-96 w-full"
-          frameborder="0"
           src="https://www.google.com/maps/embed/v1/place?q=University+of+Information+Technology+VNU-HCM,+Đường+Hàn+Thuyên,+khu+phố+6+P,+Linh+Trung,+Thủ+Đức,+Ho+Chi+Minh+City,+Vietnam&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
         ></iframe>
       </section>

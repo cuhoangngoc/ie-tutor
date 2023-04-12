@@ -79,6 +79,11 @@ const AppFooter = () => {
                   </span>
                 </a>
               </Link>
+              <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                IE Tutor is a platform that connects students with tutors. We
+                provide a platform for tutors to advertise their services and
+                for students to find tutors.
+              </p>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
               {navLinks.map(({ group, links }, index) => (
