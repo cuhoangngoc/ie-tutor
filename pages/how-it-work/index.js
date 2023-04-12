@@ -92,8 +92,8 @@ export default function HowItWork() {
       </section>
 
       {/* Lợi ích của dịch vụ */}
-      <section className="my-20 grid grid-cols-1 gap-4 bg-[url('https://demos.wp-guppy.com/tuturnp/wp-content/uploads/2022/02/img-04-1.jpg')] bg-fixed bg-no-repeat xl:grid-cols-2">
-        <div></div>
+      <section className="my-20 grid grid-cols-1 gap-4 bg-[url('https://demos.wp-guppy.com/tuturnp/wp-content/uploads/2022/02/img-04-1.jpg')] bg-fixed bg-no-repeat lg:grid-cols-2">
+        <div className="hidden lg:block"></div>
         <div className="bg-white px-8">
           <img
             decoding="async"
