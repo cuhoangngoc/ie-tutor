@@ -1,8 +1,8 @@
 import Layout from '../../components/Layout/Layout';
-import Card from './Card';
-import Hero from './Hero';
-import GradientBtn from './GradientBtn';
-import CardSide from './CardSide';
+import Card from '../../components/HowItWork/Card';
+import Hero from '../../components/HowItWork/Hero';
+import GradientBtn from '../../components/HowItWork/GradientBtn';
+import CardSide from '../../components/HowItWork/CardSide';
 import Image from 'next/image';
 
 import UmbrellaIcon from '../../public/imgs/logo/umbrella-100.png';
