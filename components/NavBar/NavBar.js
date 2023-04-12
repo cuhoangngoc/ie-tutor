@@ -40,7 +40,7 @@ const NavBar = () => {
         </a>
       </Link>
       <div className="flex md:order-2">
-        <button className="btn bg-[#3E54AC]">
+        <button className="btn bg-[#3E54AC] hover:bg-indigo-600">
           <Link href="/find-tutors" legacyBehavior>
             <a>Get started</a>
           </Link>
