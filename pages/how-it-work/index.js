@@ -10,6 +10,9 @@ import ProtectIcon from '../../public/imgs/logo/protect-100.png';
 import WinkIcon from '../../public/imgs/logo/wink-100.png';
 
 HowItWork.title = 'How It Work';
+HowItWork.description =
+  'This page provides information about how the platform work';
+
 export default function HowItWork() {
   // Các bước sử dụng dịch vụ
   const steps = [

@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -9,13 +8,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <link
-            rel="icon"
-            type="image/x-icon"
-            href="../public/imgs/logo/favicons/favicons-32.png"
-          />
-        </Head>
+        <Head></Head>
         <body className="antialiased">
           <Main />
           <NextScript />

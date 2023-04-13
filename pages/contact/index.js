@@ -1,6 +1,8 @@
 import Layout from '../../components/Layout/Layout';
 
 Contact.title = 'Contact';
+Contact.description = 'This is the contact page';
+
 export default function Contact() {
   return (
     <Layout>

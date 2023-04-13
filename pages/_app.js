@@ -6,9 +6,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="icon" type="image/x-icon" href={favicon.src} />
         <title>{Component.title}</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta name="description" content={Component.description} />
       </Head>
       <Component {...pageProps} />;
     </>
