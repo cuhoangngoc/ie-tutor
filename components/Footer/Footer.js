@@ -67,13 +67,7 @@ const AppFooter = () => {
             <div>
               <Link href="/" legacyBehavior>
                 <a className="flex">
-                  <Image
-                    src={logo.src}
-                    width={70}
-                    height={70}
-                    className="mr-3"
-                    alt="IE Tutor Logo"
-                  />
+                  <Image src={logo} className="mr-3 w-16" alt="IE Tutor Logo" />
                   <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
                     IE Tutor
                   </span>
