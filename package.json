@@ -10,6 +10,11 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@devexpress/dx-react-core": "^4.0.3",
+    "@devexpress/dx-react-grid": "^4.0.3",
+    "@devexpress/dx-react-grid-material-ui": "^4.0.3",
+    "@devexpress/dx-react-scheduler": "^4.0.3",
+    "@devexpress/dx-react-scheduler-material-ui": "^4.0.3",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.12.0",
@@ -18,7 +23,8 @@
     "flowbite-react": "^0.4.2",
     "next": "13.2.4",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "rrule": "^2.7.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
