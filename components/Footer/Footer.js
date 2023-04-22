@@ -1,6 +1,8 @@
 import { FaFacebook, FaYoutube } from 'react-icons/fa';
-import Link from 'next/link';
 import { Footer } from 'flowbite-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import logo from '../../public/imgs/logo/logo-100.png';
 
 const AppFooter = () => {
   const navLinks = [
@@ -65,16 +67,17 @@ const AppFooter = () => {
             <div>
               <Link href="/" legacyBehavior>
                 <a className="flex">
-                  <img
-                    src="https://flowbite.com/docs/images/logo.svg"
-                    className="mr-3 h-6 sm:h-9"
-                    alt="IE Tutor Logo"
-                  />
+                  <Image src={logo} className="mr-3 w-16" alt="IE Tutor Logo" />
                   <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
                     IE Tutor
                   </span>
                 </a>
               </Link>
+              <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                IE Tutor is a platform that connects students with tutors. We
+                provide a platform for tutors to advertise their services and
+                for students to find tutors.
+              </p>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
               {navLinks.map(({ group, links }, index) => (
