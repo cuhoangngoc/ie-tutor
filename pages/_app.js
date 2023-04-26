@@ -1,10 +1,11 @@
 import '../styles/globals.css';
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import Head from 'next/head';
 import favicon from '../public/imgs/logo/favicons/favicons-32.png';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <UserProvider>
       <Head>
         <link rel="icon" type="image/x-icon" href={favicon.src} />
         <title>{Component.title}</title>
@@ -12,7 +13,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="description" content={Component.description} />
       </Head>
       <Component {...pageProps} />;
-    </>
+    </UserProvider>
   );
 }
 
