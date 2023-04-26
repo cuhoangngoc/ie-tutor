@@ -10,8 +10,8 @@ const AppFooter = () => {
       group: 'Services',
       links: [
         {
-          title: 'Finding tutors',
-          path: '/find-tutors',
+          title: 'Finding instructors',
+          path: '/find-instructors',
         },
       ],
     },

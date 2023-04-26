@@ -10,8 +10,8 @@ const NavBar = () => {
       path: '/',
     },
     {
-      title: 'Find tutor',
-      path: '/find-tutors',
+      title: 'Find instructors',
+      path: '/find-instructors',
     },
     {
       title: 'How it work',
@@ -40,7 +40,7 @@ const NavBar = () => {
       </Link>
       <div className="flex md:order-2">
         <button className="btn mr-2 border-none bg-primary text-black hover:bg-indigo-600 hover:text-white">
-          <Link href="/find-tutors" legacyBehavior>
+          <Link href="/find-instructors" legacyBehavior>
             <a>Get started</a>
           </Link>
         </button>
