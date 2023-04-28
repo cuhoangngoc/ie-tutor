@@ -34,21 +34,29 @@ const Card = () => {
     ];
 
     return (
-        <div className="grid grid-cols-2 grid-rows-2 md:gap-7 gap-4 bg-[#f7f8fc] md:p-20 p-2">
-            {content.map((content, i) => (
-                <div className="col-span-2 row-span-1 rounded-lg bg-[#FFFFFF] md:col-span-1 p-5">
-                    <div className="flex justify-center items-center">
-                        <div className="flex h-24 w-24 bg-[#F7F8FC] rounded-full justify-center items-center">
-                            <Image src={content.url} alt={content.alt} height={50} width={50}></Image>
-                        </div>
-                        <div className="flex flex-1 flex-col px-4 py-2">
-                            <span className="text-2xl font-bold">{content.title}</span>
-                            <p className="text-lg text-gray-700">{content.decription}</p>
-                        </div>
-                    </div>
-                </div>
-            ))}
-        </div>
+      <div className="grid grid-cols-2 grid-rows-2 gap-4 bg-[#f7f8fc] p-2 md:gap-7 md:p-20">
+        {content.map((content, i) => (
+          <div
+            className="col-span-2 row-span-1 rounded-lg bg-[#FFFFFF] p-5 md:col-span-1"
+            key={i}
+          >
+            <div className="flex items-center justify-center">
+              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-[#F7F8FC]">
+                <Image
+                  src={content.url}
+                  alt={content.alt}
+                  height={50}
+                  width={50}
+                ></Image>
+              </div>
+              <div className="flex flex-1 flex-col px-4 py-2">
+                <span className="text-2xl font-bold">{content.title}</span>
+                <p className="text-lg text-gray-700">{content.decription}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     );
 };
 

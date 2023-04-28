@@ -10,8 +10,24 @@ const nextConfig = {
     '@devexpress/dx-scheduler-core',
     '@devexpress/dx-react-scheduler-material-ui',
     '@devexpress/dx-react-scheduler',
-    '@devexpress/dx-react-grid-material-ui'
+    '@devexpress/dx-react-grid-material-ui',
   ],
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 's.gravatar.com',
+        port: '',
+      },
+
+      {
+        protocol: 'https',
+        hostname: 'source.unsplash.com',
+        port: '',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
