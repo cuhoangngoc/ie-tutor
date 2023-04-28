@@ -10,8 +10,8 @@ const AppFooter = () => {
       group: 'Services',
       links: [
         {
-          title: 'Finding tutors',
-          path: '/find-tutors',
+          title: 'Finding instructors',
+          path: '/find-instructors',
         },
       ],
     },
@@ -67,7 +67,12 @@ const AppFooter = () => {
             <div>
               <Link href="/" legacyBehavior>
                 <a className="flex">
-                  <Image src={logo} className="mr-3 w-16" alt="IE Tutor Logo" />
+                  <Image
+                    src={logo}
+                    className="mr-3 w-16"
+                    alt="IE Tutor Logo"
+                    priority
+                  />
                   <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
                     IE Tutor
                   </span>

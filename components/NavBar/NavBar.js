@@ -10,8 +10,8 @@ const NavBar = () => {
       path: '/',
     },
     {
-      title: 'Find tutor',
-      path: '/find-tutors',
+      title: 'Find instructors',
+      path: '/find-instructors',
     },
     {
       title: 'How it work',
@@ -27,7 +27,12 @@ const NavBar = () => {
     <Navbar fluid={true} rounded={true} className="mb-[2rem] shadow-lg">
       <Link href="/" legacyBehavior>
         <a className="flex">
-          <Image src={logo} className="mr-3 w-16" alt="IE Tutor Logo" />
+          <Image
+            src={logo}
+            className="mr-3 w-16"
+            alt="IE Tutor Logo"
+            priority
+          />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             IE Tutor
           </span>
@@ -35,7 +40,7 @@ const NavBar = () => {
       </Link>
       <div className="flex md:order-2">
         <button className="btn mr-2 border-none bg-primary text-black hover:bg-indigo-600 hover:text-white">
-          <Link href="/find-tutors" legacyBehavior>
+          <Link href="/find-instructors" legacyBehavior>
             <a>Get started</a>
           </Link>
         </button>
