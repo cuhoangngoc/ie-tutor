@@ -31,7 +31,7 @@ const NavBar = () => {
   ];
 
   return (
-    <Navbar fluid={true} rounded={true} className="mb-[2rem] shadow-lg">
+    <Navbar fluid={true} rounded={true} className="shadow-lg">
       <Link href="/" legacyBehavior>
         <a className="flex">
           <Image

@@ -26,8 +26,8 @@ export const Sidebar = () => {
           <details className="" open>
             <summary className="text-xl font-bold">Price range</summary>
             <div className="mt-4 flex flex-row justify-between">
-              <input type="text w-[40%]" value={1} />
-              <input type="text w-[40%]" value={45000} />
+              <input type="text w-[40%]" defaultValue={1} />
+              <input type="text w-[40%]" defaultValue={45000} />
             </div>
           </details>
         </div>
@@ -53,21 +53,21 @@ export const Sidebar = () => {
                 <h3 className="text-l font-bold">Time of day</h3>
                 <div className="flex flex-row items-center gap-4">
                   <input type="checkbox" id="pre" />
-                  <label className="flex flex-row" for="pre">
+                  <label className="flex flex-row" htmlFor="pre">
                     <BsFillSunriseFill className="mr-2 h-6 w-6" />
                     <span>PRE 12PM</span>{' '}
                   </label>
                 </div>
                 <div className="mt-4 flex flex-row items-center gap-4">
                   <input type="checkbox" id="middle" />
-                  <label className="flex flex-row" for="middle">
+                  <label className="flex flex-row" htmlFor="middle">
                     <BsFillSunFill className="mr-2 h-6 w-6" />
                     <span>12PM-5PM</span>{' '}
                   </label>
                 </div>
                 <div className="mt-4 flex flex-row items-center gap-4">
                   <input type="checkbox" id="after" />
-                  <label className="flex flex-row" for="after">
+                  <label className="flex flex-row" htmlFor="after">
                     <BsFillSunsetFill className="mr-2 h-6 w-6" />
                     <span>AFTER 5PM</span>{' '}
                   </label>
@@ -77,31 +77,31 @@ export const Sidebar = () => {
                 <h3 className="text-l font-bold">Day of week</h3>
                 <div className="mt-4 flex flex-row items-center gap-4">
                   <input type="checkbox" id="Mon" />
-                  <label className="flex flex-row" for="Mon">
+                  <label className="flex flex-row" htmlFor="Mon">
                     Mon{' '}
                   </label>
                 </div>
                 <div className="mt-4 flex flex-row items-center gap-4">
                   <input type="checkbox" id="Tue" />
-                  <label className="flex flex-row" for="Tue">
+                  <label className="flex flex-row" htmlFor="Tue">
                     Tue{' '}
                   </label>
                 </div>
                 <div className="mt-4 flex flex-row items-center gap-4">
                   <input type="checkbox" id="Wed" />
-                  <label className="flex flex-row" for="Wed">
+                  <label className="flex flex-row" htmlFor="Wed">
                     Wed{' '}
                   </label>
                 </div>
                 <div className="mt-4 flex flex-row items-center gap-4">
                   <input type="checkbox" id="Wed" />
-                  <label className="flex flex-row" for="Wed">
+                  <label className="flex flex-row" htmlFor="Wed">
                     Wed{' '}
                   </label>
                 </div>
                 <div className="mt-4 flex flex-row items-center gap-4">
                   <input type="checkbox" id="Fri" />
-                  <label className="flex flex-row" for="Fri">
+                  <label className="flex flex-row" htmlFor="Fri">
                     Fri{' '}
                   </label>
                 </div>
@@ -115,7 +115,7 @@ export const Sidebar = () => {
             <div>
               <div className="mt-4 flex flex-row items-center gap-4">
                 <input type="checkbox" id="rate5" value={5} />
-                <label for="rate5" className="flex flex-row gap-1">
+                <label htmlFor="rate5" className="flex flex-row gap-1">
                   <AiFillStar className="h-6 w-6 text-yellow-300" />
                   <AiFillStar className="h-6 w-6 text-yellow-300" />
                   <AiFillStar className="h-6 w-6 text-yellow-300" />
@@ -127,7 +127,7 @@ export const Sidebar = () => {
               </div>
               <div className="mt-4 flex flex-row items-center gap-4">
                 <input type="checkbox" id="rate4" value={4} />
-                <label for="rate4" className="flex flex-row gap-1">
+                <label htmlFor="rate4" className="flex flex-row gap-1">
                   <AiFillStar className="h-6 w-6 text-yellow-300" />
                   <AiFillStar className="h-6 w-6 text-yellow-300" />
                   <AiFillStar className="h-6 w-6 text-yellow-300" />
@@ -139,7 +139,7 @@ export const Sidebar = () => {
               </div>
               <div className="mt-4 flex flex-row items-center gap-4">
                 <input type="checkbox" id="rate3" value={3} />
-                <label for="rate3" className="flex flex-row gap-1">
+                <label htmlFor="rate3" className="flex flex-row gap-1">
                   <AiFillStar className="h-6 w-6 text-yellow-300" />
                   <AiFillStar className="h-6 w-6 text-yellow-300" />
                   <AiFillStar className="h-6 w-6 text-yellow-300" />
@@ -151,7 +151,7 @@ export const Sidebar = () => {
               </div>
               <div className="mt-4 flex flex-row items-center gap-4">
                 <input type="checkbox" id="rate5" value={5} />
-                <label for="rate5" className="flex flex-row gap-1">
+                <label htmlFor="rate5" className="flex flex-row gap-1">
                   <AiFillStar className="h-6 w-6 text-yellow-300" />
                   <AiFillStar className="h-6 w-6 text-yellow-300" />
                   <AiFillStar className="h-6 w-6 text-gray-200" />
@@ -163,7 +163,7 @@ export const Sidebar = () => {
               </div>
               <div className="mt-4 flex flex-row items-center gap-4">
                 <input type="checkbox" id="rate5" value={5} />
-                <label for="rate5" className="flex flex-row gap-1">
+                <label htmlFor="rate5" className="flex flex-row gap-1">
                   <AiFillStar className="h-6 w-6 text-yellow-300" />
                   <AiFillStar className="h-6 w-6 text-gray-200" />
                   <AiFillStar className="h-6 w-6 text-gray-200" />
@@ -180,7 +180,7 @@ export const Sidebar = () => {
           <details className="" open>
             <summary className="text-xl font-bold">Tutor location</summary>
             <div className="mt-4 flex flex-col justify-between">
-              <select className="w-full">
+              <select className="w-full" defaultValue={'Afghanistan'}>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Albania">Albania</option>
                 <option value="Algeria">Algeria</option>
@@ -318,9 +318,7 @@ export const Sidebar = () => {
                 <option value="Kyrgyzstan">Kyrgyzstan</option>
                 <option value="Lao">Lao People Democratic Republic</option>
                 <option value="Latvia">Latvia</option>
-                <option value="Lebanon" selected>
-                  Lebanon
-                </option>
+                <option value="Lebanon">Lebanon</option>
                 <option value="Lesotho">Lesotho</option>
                 <option value="Liberia">Liberia</option>
                 <option value="Libyan Arab Jamahiriya">
@@ -494,11 +492,11 @@ export const Sidebar = () => {
             <div className="mt-4 flex flex-col gap-4">
               <div>
                 <input type="checkbox" id="online" className="mr-2" />
-                <label for="online">Online</label>
+                <label htmlFor="online">Online</label>
               </div>
               <div>
                 <input type="checkbox" id="Offile" className="mr-2" />
-                <label for="Offile">Offile</label>
+                <label htmlFor="Offile">Offile</label>
               </div>
             </div>
           </details>
@@ -506,12 +504,12 @@ export const Sidebar = () => {
         <div className="mt-4 flex flex-col gap-4">
           <input
             type="submit"
-            value={'Apply filters'}
+            defaultValue={'Apply filters'}
             className="rounded-xl bg-red-500 p-2 text-white"
           ></input>
           <input
             type="submit"
-            value={'Clear all filters'}
+            defaultValue={'Clear all filters'}
             className="rounded-xl bg-gray-300 p-2"
           ></input>
         </div>
