@@ -8,11 +8,13 @@ import { GrMailOption, GrHome, GrPhone } from 'react-icons/gr';
 import UserScheduler from '../../components/UserScheduler';
 import Button from '../../components/Button';
 import Link from 'next/link';
+import Spinner from '../../components/Spinner';
 
 const User = ({ user }) => {
   const [token, setToken] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
   const [accountType, setAccountType] = useState('Student account');
+  const [isLoading, setIsLoading] = useState(true);
 
   // Lấy authorized token từ Auth0 thao tác với Auth0 Management API
   // useEffect(() => {
@@ -47,9 +49,13 @@ const User = ({ user }) => {
       if (userInfo?.role === 0) setAccountType('Students account');
       else if (userInfo?.role === 1) setAccountType('Instructors account');
       else setAccountType('Admins account');
+
+      setIsLoading(false);
     };
     getAllUserInfo();
   }, [userInfo, user.email]);
+
+  if (isLoading) return <Spinner />;
 
   return (
     <Layout>

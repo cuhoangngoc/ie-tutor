@@ -10,6 +10,7 @@ import Button from '../../components/Button';
 import Editor from '../../components/Editor';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 const Edit = ({ user }) => {
   const [userInfo, setUserInfo] = useState(
@@ -37,6 +38,16 @@ const Edit = ({ user }) => {
 
       // redirect to profile page with router
       router.push('/user');
+      toast.success('Profile updated successfully!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
     }
   };
 
