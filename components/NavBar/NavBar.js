@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../public/imgs/logo/logo-100.png';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import avatar from '../../public/imgs/logo/wink-100.png';
 import Spinner from '../Spinner';
 
 const NavBar = () => {
@@ -52,7 +51,7 @@ const NavBar = () => {
               <Image
                 alt=""
                 className="rounded-full ring-1 ring-violet-400 ring-offset-4 ring-offset-gray-800 dark:bg-gray-500"
-                src={user.picture ?? avatar.src}
+                src={user.picture}
                 width={40}
                 height={40}
               />

@@ -55,6 +55,32 @@ const User = ({ user }) => {
     getAllUserInfo();
   }, [userInfo, user.email]);
 
+  const fakeData = [
+    {
+      title: 'Website Re-Design Plan',
+      startDate: new Date(2018, 6, 25, 9, 35),
+      endDate: new Date(2018, 6, 25, 11, 30),
+      id: 0,
+      rRule: 'FREQ=DAILY;COUNT=3',
+      exDate: '20180628T063500Z,20180626T063500Z',
+    },
+    {
+      title: 'Book Flights to San Fran for Sales Trip',
+      startDate: new Date(2018, 6, 25, 12, 11),
+      endDate: new Date(2018, 6, 25, 13, 0),
+      id: 1,
+      rRule: 'FREQ=DAILY;COUNT=4',
+      exDate: '20180627T091100Z',
+    },
+    {
+      title: 'Install New Router in Dev Room',
+      startDate: new Date(2018, 6, 25, 13, 30),
+      endDate: new Date(2018, 6, 25, 14, 35),
+      id: 2,
+      rRule: 'FREQ=DAILY;COUNT=5',
+    },
+  ];
+
   if (isLoading) return <Spinner />;
 
   return (
@@ -119,7 +145,7 @@ const User = ({ user }) => {
           <h1 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white">
             My schedule
           </h1>
-          <UserScheduler />
+          <UserScheduler appointments={fakeData} />
         </div>
       </div>
     </Layout>

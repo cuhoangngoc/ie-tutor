@@ -15,7 +15,20 @@ import {
   DateNavigator,
 } from '@devexpress/dx-react-scheduler-material-ui';
 
-import { appointments } from '../pages/demo-data/month-appointments';
+const Appointment = ({ children, style, ...restProps }) => (
+  <Appointments.Appointment
+    {...restProps}
+    style={{
+      ...style,
+      borderRadius: '8px',
+      fontSize: '16px',
+      fontWeight: '600',
+      color: '#fff',
+    }}
+  >
+    {children}
+  </Appointments.Appointment>
+);
 
 const ExternalViewSwitcher = ({ currentViewName, onChange }) => (
   <RadioGroup
@@ -36,7 +49,7 @@ export default class UserScheduler extends React.PureComponent {
     super(props);
 
     this.state = {
-      data: appointments,
+      data: props.appointments,
       currentViewName: 'Month',
     };
 
@@ -58,7 +71,7 @@ export default class UserScheduler extends React.PureComponent {
         <Paper>
           <Scheduler data={data}>
             <ViewState
-              defaultCurrentDate={new Date()}
+              defaultCurrentDate="2018-07-25"
               currentViewName={currentViewName}
             />
             <WeekView startDayHour={7} endDayHour={19} />
@@ -70,7 +83,7 @@ export default class UserScheduler extends React.PureComponent {
             /> */}
             <MonthView />
 
-            <Appointments />
+            <Appointments appointmentComponent={Appointment} />
             <AppointmentTooltip />
 
             <Toolbar />
