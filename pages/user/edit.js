@@ -10,12 +10,10 @@ import Button from '../../components/Button';
 import Editor from '../../components/Editor';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { toast } from 'react-toastify';
+import SuccessToast from '../../components/Toast/SuccessToast';
 
 const Edit = ({ user }) => {
-  const [userInfo, setUserInfo] = useState(
-    JSON.parse(localStorage.getItem('userInfo'))
-  );
+  const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')));
   const [address, setAddress] = useState(userInfo?.address);
   const [phone, setPhone] = useState(userInfo?.phone);
   const [bio, setBio] = useState(userInfo?.bio);
@@ -38,16 +36,7 @@ const Edit = ({ user }) => {
 
       // redirect to profile page with router
       router.push('/user');
-      toast.success('Profile updated successfully!', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
+      SuccessToast('Profile updated successfully!');
     }
   };
 
@@ -103,13 +92,8 @@ const Edit = ({ user }) => {
         </div>
 
         <div className="mt-16 w-full grow rounded-lg bg-white px-8 py-4 shadow-lg ring-1 dark:bg-gray-800 lg:col-span-2">
-          <h1 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white">
-            My Bio
-          </h1>
-          <Editor
-            getContent={(value) => setBio(value)}
-            defaultValue={userInfo?.bio}
-          />
+          <h1 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white">My Bio</h1>
+          <Editor getContent={(value) => setBio(value)} defaultValue={userInfo?.bio} />
         </div>
 
         <Button onClick={handleClick} className="max-w-[10rem] bg-primary">

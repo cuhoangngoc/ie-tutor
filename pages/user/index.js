@@ -4,11 +4,13 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import askForToken from '../../lib/ask-for-token';
 import axios from 'axios';
-import { GrMailOption, GrHome, GrPhone } from 'react-icons/gr';
+import { GrMailOption, GrHome, GrPhone, GrMoney } from 'react-icons/gr';
 import UserScheduler from '../../components/UserScheduler';
 import Button from '../../components/Button';
 import Link from 'next/link';
 import Spinner from '../../components/Spinner';
+import BecomeInsModal from '../../components/User/BecomeInsModal';
+import SubjectRequestModal from '../../components/User/SubjectRequestModal';
 
 const User = ({ user }) => {
   const [token, setToken] = useState(null);
@@ -39,9 +41,7 @@ const User = ({ user }) => {
 
   useEffect(() => {
     const getAllUserInfo = async () => {
-      const res = await axios.get(
-        `/api/users/get-user-info?email=${user.email}`
-      );
+      const res = await axios.get(`/api/users/get-user-info?email=${user.email}`);
 
       localStorage.setItem('userInfo', JSON.stringify(res.data));
       setUserInfo(res.data);
@@ -123,11 +123,23 @@ const User = ({ user }) => {
             </div>
           )}
 
+          {/* Hiển thị lương theo giờ đối với intructor */}
+          {userInfo?.role === 1 && (
+            <div className="mt-4 flex items-center text-gray-700 dark:text-gray-200">
+              <GrMoney className="h-6 w-6 fill-current" />
+              <h1 className="px-2 text-sm"> {userInfo?.hourly_wage} $/hour</h1>
+            </div>
+          )}
+
           <div className="my-4 flex items-center text-gray-700 dark:text-gray-200">
             <h1 className="text-sm">
               You signed in with <strong>{accountType}</strong>
             </h1>
           </div>
+
+          {/* Nếu là tài khoản studen thì hiển thị chức năng yêu đăng ký tài khoản instructor, không hiển thị đối với tài khoản admin và instructor*/}
+          {userInfo?.role === 0 && <BecomeInsModal user_id={userInfo?._id} />}
+          {userInfo?.role === 1 && <SubjectRequestModal user_id={userInfo?._id} />}
 
           <Button className="float-right bg-primary">
             <Link href="/user/edit">Edit Profile</Link>
@@ -135,16 +147,12 @@ const User = ({ user }) => {
         </div>
 
         <div className="mt-16 w-full grow rounded-lg bg-white px-8 py-4 shadow-lg ring-1 dark:bg-gray-800 lg:col-span-2">
-          <h1 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white">
-            My Bio
-          </h1>
+          <h1 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white">My Bio</h1>
           <div dangerouslySetInnerHTML={{ __html: userInfo?.bio }}></div>
         </div>
 
         <div className="mt-16 w-full rounded-lg bg-[#F0F0F0] px-8 py-4 shadow-lg ring-1 dark:bg-gray-800 lg:col-span-3">
-          <h1 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white">
-            My schedule
-          </h1>
+          <h1 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white">My schedule</h1>
           <UserScheduler appointments={fakeData} />
         </div>
       </div>

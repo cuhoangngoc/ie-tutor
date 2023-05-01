@@ -28,6 +28,10 @@ const nextConfig = {
       },
     ],
   },
+
+  env: {
+    REST_API_ENDPOINT: process.env.REST_API_ENDPOINT,
+  },
 };
 
 module.exports = nextConfig;
