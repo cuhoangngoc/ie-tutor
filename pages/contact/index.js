@@ -6,7 +6,7 @@ Contact.description = 'This is the contact page';
 export default function Contact() {
   return (
     <Layout>
-      <section className="py-6 dark:bg-gray-800 dark:text-gray-50">
+      <section className="mt-[2rem] py-6 dark:bg-gray-800 dark:text-gray-50">
         <div className="mx-auto grid max-w-6xl grid-cols-1 px-6 md:grid-cols-2 md:divide-x lg:px-8">
           {/* Contact info */}
           <div className="py-6 md:px-6 md:py-0">

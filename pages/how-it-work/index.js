@@ -84,7 +84,7 @@ export default function HowItWork() {
   return (
     <Layout>
       {/* Hướng dẫn sử dụng dịch vụ */}
-      <section className="container mx-auto">
+      <section className="container mx-auto mt-[2rem]">
         <Hero hero={firstHero} />
 
         <div className="flex flex-col items-center justify-center gap-4 md:flex-row">

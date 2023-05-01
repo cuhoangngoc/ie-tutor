@@ -2,6 +2,8 @@ import '../styles/globals.css';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import Head from 'next/head';
 import favicon from '../public/imgs/logo/favicons/favicons-32.png';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,6 +15,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="description" content={Component.description} />
       </Head>
       <Component {...pageProps} />;
+      <ToastContainer />
     </UserProvider>
   );
 }
