@@ -1,4 +1,4 @@
-import NavBar from '../NavBar/Navbar';
+import NavBar from '../NavBar/NavBar';
 import AppFooter from '../Footer/Footer';
 import Head from 'next/head';
 import favicon from '../../public/imgs/logo/favicons/favicons-32.png';
