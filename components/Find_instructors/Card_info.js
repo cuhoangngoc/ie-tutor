@@ -2,8 +2,7 @@ import { BsCheck2Circle } from 'react-icons/bs';
 import { AiFillStar } from 'react-icons/ai';
 import { MdOutlinePlace } from 'react-icons/md';
 import { SlCamrecorder } from 'react-icons/sl';
-import Image from 'next/image';
-import { data } from 'autoprefixer';
+
 export const Card_info = () => {
   const dataTest = [
     {

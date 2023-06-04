@@ -33,6 +33,10 @@ const NavBar = () => {
       title: 'Contact',
       path: '/contact',
     },
+    {
+      title:'Chats',
+      path:'/chat'
+    },
   ];
 
   return (
