@@ -1,19 +1,16 @@
-import React from 'react'
-import Image from 'next/image'
-import {AiOutlineCheckCircle} from 'react-icons/ai'
+import React from 'react';
+import Image from 'next/image';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 const Card1 = ({ urlteacher, urlavatar, name, address, money, phone, whatsapp, qualification }) => {
-
   return (
     <div className="m-4 rounded-md border">
       <Image src={urlteacher} alt=""></Image>
       <div className="p-5">
-        <div className="flex flex-row">
+        <div className="flex flex-row items-center gap-2">
           <Image
             src={urlavatar}
-            height={46}
-            width={46}
-            className="mr-3 rounded-full"
+            className="h-[4rem] w-[4rem] justify-between rounded-full"
             alt=""
           />
           <div className="">
@@ -46,6 +43,6 @@ const Card1 = ({ urlteacher, urlavatar, name, address, money, phone, whatsapp, q
       </div>
     </div>
   );
-}
+};
 
-export default Card1
+export default Card1;

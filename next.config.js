@@ -18,13 +18,15 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 's.gravatar.com',
-        port: '',
       },
 
       {
         protocol: 'https',
         hostname: 'source.unsplash.com',
-        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
       },
     ],
   },

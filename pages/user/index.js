@@ -10,34 +10,11 @@ import Button from '../../components/Button';
 import Link from 'next/link';
 import Spinner from '../../components/Spinner';
 import BecomeInsModal from '../../components/User/BecomeInsModal';
-import SubjectRequestModal from '../../components/User/SubjectRequestModal';
 
 const User = ({ user }) => {
-  const [token, setToken] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
   const [accountType, setAccountType] = useState('Student account');
   const [isLoading, setIsLoading] = useState(true);
-
-  // Lấy authorized token từ Auth0 thao tác với Auth0 Management API
-  // useEffect(() => {
-  //   const getAllUserInfo = async () => {
-  //     const token = await askForToken();
-  //     setToken(token);
-
-  //     const options = {
-  //       method: 'GET',
-  //       url: `https://uit.au.auth0.com/api/v2/users/${user.sub}`,
-  //       headers: {
-  //         authorization: `Bearer ${token}`,
-  //         'Content-Type': 'application/json',
-  //       },
-  //     };
-  //     const response = await axios.request(options);
-  //     setUserInfo(response.data);
-  //     console.log(userInfo);
-  //   };
-  //   getAllUserInfo();
-  // }, []);
 
   useEffect(() => {
     const getAllUserInfo = async () => {
@@ -46,14 +23,14 @@ const User = ({ user }) => {
       localStorage.setItem('userInfo', JSON.stringify(res.data));
       setUserInfo(res.data);
 
-      if (userInfo?.role === 0) setAccountType('Students account');
-      else if (userInfo?.role === 1) setAccountType('Instructors account');
+      if (res.data.role === 0) setAccountType('Students account');
+      else if (res.data.role === 1) setAccountType('Instructors account');
       else setAccountType('Admins account');
 
       setIsLoading(false);
     };
     getAllUserInfo();
-  }, [userInfo, user.email]);
+  }, [user.email]);
 
   const fakeData = [
     {
@@ -139,7 +116,6 @@ const User = ({ user }) => {
 
           {/* Nếu là tài khoản studen thì hiển thị chức năng yêu đăng ký tài khoản instructor, không hiển thị đối với tài khoản admin và instructor*/}
           {userInfo?.role === 0 && <BecomeInsModal user_id={userInfo?._id} />}
-          {userInfo?.role === 1 && <SubjectRequestModal user_id={userInfo?._id} />}
 
           <Button className="float-right bg-primary">
             <Link href="/user/edit">Edit Profile</Link>

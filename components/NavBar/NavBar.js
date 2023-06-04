@@ -21,13 +21,12 @@ const NavBar = () => {
       path: '/find-instructors',
     },
     {
+      title: 'Subscriptions',
+      path: '/subscriptions',
+    },
+    {
       title: 'How it work',
       path: '/how-it-work',
-    },
-
-    {
-      title: 'Detail',
-      path: '/instructor-detail',
     },
     {
       title: 'Contact',
@@ -101,7 +100,7 @@ const NavBar = () => {
             </div>
           </div>
         ) : (
-          <button className="btn mr-2 border-none bg-primary text-black hover:bg-indigo-600 hover:text-white">
+          <button className="btn mr-2 border-none bg-primary text-white hover:bg-indigo-600">
             <Link href="/api/auth/login">Get started</Link>
           </button>
         )}
