@@ -3,9 +3,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Chart from '../../public/imgs/admin/chart-32.png';
 import User from '../../public/imgs/admin/user-32.png';
-import { FcBullish, FcPortraitMode } from 'react-icons/fc';
+import { FcBullish, FcPortraitMode, FcPlanner, FcRightUp2 } from 'react-icons/fc';
 
+import { useRouter } from 'next/router';
 const AdminLayout = ({ children }) => {
+
+  const router = useRouter();
+
+  // router.back() 
+  
   const navLinks = [
     {
       name: 'Dashboard',
@@ -16,6 +22,16 @@ const AdminLayout = ({ children }) => {
       name: 'Users',
       href: '/admin/users',
       icon: <FcPortraitMode size={32} />,
+    },
+    {
+      name: 'Plans',
+      href: '/admin/plans',
+      icon: <FcPlanner size={32} />,
+    },
+    {
+      name: 'Requests',
+      href: '/admin/requests',
+      icon: <FcRightUp2 size={32} />,
     },
   ];
 
