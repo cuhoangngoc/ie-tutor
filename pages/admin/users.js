@@ -17,7 +17,7 @@ const users = ({ user }) => {
         };
 
         getAllUsers();
-    }, [user.email]);
+    });
 
     function displayUserRole(role) {
         let userRole = "";

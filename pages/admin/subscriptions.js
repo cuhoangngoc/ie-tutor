@@ -87,7 +87,7 @@ const subscriptions = () => {
                                         <td className="px-6 py-4">{subscription.planId}</td>
                                         <td className="px-6 py-4">{subscription.duration}</td>
                                         <td className="px-6 py-4">{subscription.status}</td>
-                                        <td className="px-6 py-4">{subscription.total}</td>
+                                        <td className="px-6 py-4">{subscription.total} USD</td>
                                         <td className="px-6 py-4">{displayformatdate(subscription.createdAt)}</td>
                                         <td className="px-6 py-4">{displayformatdate(subscription.startDate)}</td>
                                         <td className="px-6 py-4">{displayformatdate(subscription.endDate)}</td>
