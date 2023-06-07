@@ -61,27 +61,21 @@ const AppFooter = () => {
   ];
   return (
     <>
-      <Footer container={true} className="mt-[1rem] !bg-[#EEEEEE]">
+      <Footer container={true} className="!bg-[#EEEEEE]">
         <div className="w-full">
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
             <div>
               <Link href="/" legacyBehavior>
                 <a className="flex">
-                  <Image
-                    src={logo}
-                    className="mr-3 w-16"
-                    alt="IE Tutor Logo"
-                    priority
-                  />
+                  <Image src={logo} className="mr-3 w-16" alt="IE Tutor Logo" priority />
                   <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
                     IE Tutor
                   </span>
                 </a>
               </Link>
               <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-                IE Tutor is a platform that connects students with tutors. We
-                provide a platform for tutors to advertise their services and
-                for students to find tutors.
+                IE Tutor is a platform that connects students with tutors. We provide a platform for
+                tutors to advertise their services and for students to find tutors.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">

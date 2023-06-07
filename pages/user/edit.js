@@ -1,16 +1,14 @@
 import Layout from '../../components/Layout/Layout';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
-import { useUser } from '@auth0/nextjs-auth0/client';
 import Image from 'next/image';
-import { useEffect, useState, useRef } from 'react';
-import askForToken from '../../lib/ask-for-token';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { GrMailOption, GrHome, GrPhone } from 'react-icons/gr';
 import Button from '../../components/Button';
 import Editor from '../../components/Editor';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import SuccessToast from '../../components/Toast/SuccessToast';
+import { SuccessToast } from '../../components/Toast';
 
 const Edit = ({ user }) => {
   const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')));
