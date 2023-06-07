@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Chart from '../../public/imgs/admin/chart-32.png';
 import User from '../../public/imgs/admin/user-32.png';
-import { FcBullish, FcPortraitMode, FcPlanner, FcRightUp2 } from 'react-icons/fc';
+import { FcBullish, FcPortraitMode, FcPlanner, FcRightUp2, FcSurvey } from 'react-icons/fc';
 
 import { useRouter } from 'next/router';
 const AdminLayout = ({ children }) => {
@@ -27,6 +27,11 @@ const AdminLayout = ({ children }) => {
       name: 'Plans',
       href: '/admin/plans',
       icon: <FcPlanner size={32} />,
+    },
+    {
+      name: 'Subscriptions',
+      href: '/admin/subscriptions',
+      icon: <FcSurvey size={32} />,
     },
     {
       name: 'Requests',
