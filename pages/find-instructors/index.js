@@ -10,7 +10,7 @@ export const FindInstructors = ({ instructors }) => {
   const [selectOption, setSelectOption] = useState('');
   useEffect(() => {
     setAllTutor(instructors);
-  }, []);
+  }, [instructors]);
   useEffect(() => {
     setAllTutor(
       instructors.filter((data) => {
@@ -20,26 +20,33 @@ export const FindInstructors = ({ instructors }) => {
         );
       })
     );
-  }, [search, backupTutor]);
+  }, [search, instructors]);
+  useEffect(() => {
+    console.log(selectRatingChange);
+    setAllTutor(instructors.filter((data) => data.rating >= selectRatingChange));
+  }, [selectRatingChange, instructors]);
+  useEffect(() => {
+    const backupinstructors = instructors;
+    if (selectOption === 'Price hight to low') {
+      setAllTutor(
+        backupinstructors.sort(function (a, b) {
+          return b.hourlyWage - a.hourlyWage;
+        })
+      );
+    } else if (selectOption === 'Price low to hight') {
+      setAllTutor(
+        backupinstructors.sort(function (a, b) {
+          return a.hourlyWage - b.hourlyWage;
+        })
+      );
+    }
+  }, [selectOption, instructors]);
 
-  const handleClickFilter = () => {
-    setAllTutor(
-      backupTutor.filter((data) => {
-        if (startPrice == '' || endPrice == '') {
-          return data;
-          // (parseInt(data.hourlyWage) >=parseInt(startPrice) && parseInt(data.hourlyWage)<=parseInt(endPrice))
-          // &&
-          // data.bio.toLowerCase().includes(search.toLowerCase())
-        } else {
-          return (
-            parseInt(data.hourlyWage) >= parseInt(startPrice) &&
-            parseInt(data.hourlyWage) <= parseInt(endPrice)
-            // &&
-            // data.bio.toLowerCase().includes(search.toLowerCase())
-          );
-        }
-      })
-    );
+  const resetFilter = () => {
+    setAllTutor(instructors);
+    setSelectOption('');
+    setSlectRatingChange('0');
+    setSearch('');
   };
   return (
     <Layout>
@@ -109,7 +116,7 @@ export const FindInstructors = ({ instructors }) => {
                     />
                   </svg>
                   <input
-                    className="w-full w-full border-none"
+                    className="w-full border-none"
                     type="text"
                     placeholder="What are you looking for?"
                     value={search}
@@ -154,53 +161,6 @@ export const FindInstructors = ({ instructors }) => {
               {/* <Sidebar /> */}
               <div className="p-5">
                 <div className="">
-                  {/* <div className="mt-6">
-          <details className="" open>
-            <summary className="text-xl font-bold">Subject & Level</summary>
-            <div className="mt-4">
-              <select className="w-full">
-                <option>ccxxxxxxxxx</option>
-                <option>ccxxxxxxxxx</option>
-                <option>ccxxxxxxxxx</option>
-              </select>
-            </div>
-          </details>
-        </div> */}
-                  {/* <div className="mt-6">
-                    <details className="" open>
-                      <summary className="text-xl font-bold">Price range</summary>
-                      <div className="mt-4 flex flex-row justify-between">
-                        <input
-                          type="text w-[40%]"
-                          defaultValue={0}
-                          value={startPrice}
-                          onChange={(e) => setStartPrice(e.target.value)}
-                          className="border border-black"
-                        />
-                        <input
-                          type="text w-[40%]"
-                          defaultValue={1000}
-                          value={endPrice}
-                          onChange={(e) => setEndPrice(e.target.value)}
-                          className="border border-black"
-                        />
-                      </div>
-                    </details>
-                  </div> */}
-
-                  {/* <div className="mt-6">
-                    <details className="" open>
-                      <summary className="text-xl font-bold">Gender</summary>
-                      <div className="mt-4 flex flex-row justify-between">
-                        <select className="w-full">
-                          <option>Both</option>
-                          <option>Male</option>
-                          <option>Female</option>
-                        </select>
-                      </div>
-                    </details>
-                  </div> */}
-
                   <div className="mt-6">
                     <details className="" open>
                       <summary className="text-xl font-bold">Rating</summary>
@@ -240,7 +200,7 @@ export const FindInstructors = ({ instructors }) => {
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />
-                            <span>Trở lên</span>
+                            <span>And higher</span>
                           </label>
                         </div>
                         <div className="mt-4 flex flex-row items-center gap-4">
@@ -259,7 +219,7 @@ export const FindInstructors = ({ instructors }) => {
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />
-                            <span>Trở lên</span>
+                            <span>And higher</span>
                           </label>
                         </div>
                         <div className="mt-4 flex flex-row items-center gap-4">
@@ -278,7 +238,7 @@ export const FindInstructors = ({ instructors }) => {
                             <AiFillStar className="h-6 w-6 text-gray-200" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />
-                            <span>Trở lên</span>
+                            <span>And higher</span>
                           </label>
                         </div>
                         <div className="mt-4 flex flex-row items-center gap-4">
@@ -297,11 +257,17 @@ export const FindInstructors = ({ instructors }) => {
                             <AiFillStar className="h-6 w-6 text-gray-200" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />
-                            <span>Trở lên</span>
+                            <span>And higher</span>
                           </label>
                         </div>
                       </div>
                     </details>
+                  </div>
+
+                  <div className="mt-4 text-center">
+                    <button className="btn-error btn" onClick={resetFilter}>
+                      Reset filter
+                    </button>
                   </div>
                   {/* <div className="mt-4 flex flex-col gap-4">
                     <input
@@ -313,9 +279,9 @@ export const FindInstructors = ({ instructors }) => {
                   </div> */}
                 </div>
               </div>
+              {/*  */}
             </div>
-
-            <div className="w-full shadow-lg lg:w-[70%]">
+            <div className="w-full shadow-lg transition-all duration-200 lg:w-[70%]">
               {allTutor && allTutor.map((data, key) => <Card_info data={data} key={key} />)}
             </div>
           </div>
