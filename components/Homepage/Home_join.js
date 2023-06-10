@@ -1,12 +1,14 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import homeimg from '../../public/imgs/home_page/homepage img.png';
 import GradientBtn from '../../components/HowItWork/GradientBtn';
 import Link from 'next/link';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import Spinner from '../Spinner';
 
 const Home_join = () => {
-  
+  const { user, isLoading } = useUser();
+
   return (
     <div className="grid grid-cols-1 gap-16 bg-[#f7f8fc] md:grid-cols-2 md:p-20">
       <div className="m-5">
@@ -26,17 +28,24 @@ const Home_join = () => {
           dolore magna aliqua ad minim veniamque.
         </p>
 
-        <div className="my-6 flex gap-8">
-          <GradientBtn href="/" text="Start as students" color="pink" />
-          <GradientBtn href="/" text="Join as instructors" color="blue" />
-        </div>
+        {Boolean(user) || (
+          <>
+            <div className="my-6 flex gap-8">
+              <GradientBtn href="/api/auth/login" text="Start as students" color="pink" />
+              <GradientBtn href="/api/auth/login" text="Join as instructors" color="blue" />
+            </div>
+            <p className="text-base text-[#676767]">
+              You can also join as parent to explore{' '}
+              <Link className="text-[#1DA1F2]" href="/api/auth/login">
+                Join today
+              </Link>
+            </p>
+          </>
+        )}
 
-        <p className="text-base text-[#676767]">
-          You can also join as parent to explore{' '}
-          <Link className="text-[#1DA1F2]" href="/">
-            Join today
-          </Link>
-        </p>
+
+
+
       </div>
 
       <div className="hidden md:block md:w-full">
