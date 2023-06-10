@@ -2,27 +2,24 @@ import Layout from '../../components/Layout/Layout';
 import SubscriptionCard from '../../components/SubScriptions/SubscriptionCard';
 import { useState } from 'react';
 import StripeContainer from '../../components/StripeContainer';
-import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
-import { getSession } from '@auth0/nextjs-auth0';
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import Spinner from '../../components/Spinner';
 
-const Subscriptions = ({ user, userProfile, plans }) => {
+const Subscriptions = ({ plans }) => {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [paymentInfo, setPaymentInfo] = useState({ total: 0 });
+  const { user, error, isLoading } = useUser();
 
-  const router = useRouter();
-  if (userProfile.is_activated) {
-    router.push('/');
-    return;
-  }
+  if (isLoading) return <Spinner />;
+  if (error) return <div>{error.message}</div>;
 
   const selectPlan = (plan) => {
     setSelectedPlan(plan);
 
     const payment = {
-      user_id: user.sub.split('|')[1],
-      plan_id: plan.type,
+      user_id: user?.sub.split('|')[1],
+      plan_id: plan._id,
       duration: plan.duration,
       price: plan.price,
       total: plan.price * plan.duration,
@@ -54,6 +51,7 @@ const Subscriptions = ({ user, userProfile, plans }) => {
                 onClick={() => {
                   selectPlan(plan);
                 }}
+                htmlFor={`plan-${i}`}
               />
             ))}
           </div>
@@ -78,18 +76,11 @@ const Subscriptions = ({ user, userProfile, plans }) => {
 export async function getServerSideProps(context) {
   const plansPromise = await axios.get(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/plans`);
 
-  // get user
-  const { user } = await getSession(context.req, context.res);
-
-  const userProfilePromise = await axios.get(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/get-user-info?email=${user.email}`
-  );
   return {
     props: {
       plans: plansPromise.data,
-      userProfile: userProfilePromise.data,
     },
   };
 }
 
-export default withPageAuthRequired(Subscriptions);
+export default Subscriptions;

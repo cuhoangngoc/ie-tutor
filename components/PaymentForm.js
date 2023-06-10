@@ -1,6 +1,5 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axios from 'axios';
-import { useState } from 'react';
 import { showSuccessToast, showErrorToast } from './Toast';
 import { useRouter } from 'next/router';
 
@@ -36,6 +35,12 @@ const PaymentForm = ({ paymentInfo: { user_id, price, plan_id, duration, total }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!user_id) {
+      router.push('/api/auth/login');
+      return;
+    }
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement),
@@ -110,65 +115,3 @@ const PaymentForm = ({ paymentInfo: { user_id, price, plan_id, duration, total }
 };
 
 export default PaymentForm;
-
-// const PaymentForm = ({ orderInfo: { user_id, total } }) => {
-//   const [success, setSuccess] = useState(false);
-//   const stripe = useStripe();
-//   const elements = useElements();
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const { error, paymentMethod } = await stripe.createPaymentMethod({
-//       type: 'card',
-//       card: elements.getElement(CardElement),
-//     });
-
-//     if (!error) {
-//       try {
-//         const { id } = paymentMethod;
-//         const response = await axios.post(`../api/payment/save-payment`, {
-//           total,
-//           id,
-//           user_id,
-//         });
-
-//         if (response.data.success) setSuccess(true);
-//       } catch (err) {
-//         console.log(`Error: ${err}`);
-//       }
-//     }
-//   };
-
-//   return (
-//     <>
-//       {!success ? (
-//         <form
-//           onSubmit={handleSubmit}
-//           className="my-10 mx-auto max-w-lg rounded-xl bg-white"
-//         >
-//           {/* <fieldset className="FormGroup">
-//             <div className="FormRow">
-//               <CardElement options={CARD_OPTIONS} />
-//             </div>
-//           </fieldset> */}
-//           <div className="p-4">
-//             <CardElement options={CARD_OPTIONS} />
-//             <span className="mx-auto mt-2">
-//               Tổng cộng: {total ? total : 0}$
-//             </span>
-//           </div>
-
-//           <button
-//             type="submit"
-//             disabled={!stripe}
-//             className="block w-full bg-indigo-600 p-2 text-center text-white transition-all duration-200 hover:bg-indigo-700"
-//           >
-//             Thanh toán
-//           </button>
-//         </form>
-//       ) : (
-//         <div>payment success</div>
-//       )}
-//     </>
-//   );
-// };

@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   transpilePackages: [
     '@mui/icons-material',
@@ -33,10 +33,6 @@ const nextConfig = {
         hostname: 'lh3.googleusercontent.com',
       },
     ],
-  },
-
-  env: {
-    REST_API_ENDPOINT: process.env.REST_API_ENDPOINT,
   },
 };
 

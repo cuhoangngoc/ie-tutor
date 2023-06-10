@@ -1,11 +1,11 @@
-import { BsCheck2Circle } from "react-icons/bs";
-import { AiFillStar } from "react-icons/ai";
-import { MdOutlinePlace } from "react-icons/md";
-import { SlCamrecorder } from "react-icons/sl";
-import Image from "next/image";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { BsCheck2Circle } from 'react-icons/bs';
+import { AiFillStar } from 'react-icons/ai';
+import { MdOutlinePlace } from 'react-icons/md';
+import { SlCamrecorder } from 'react-icons/sl';
+import Image from 'next/image';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const Card_info = ({ data }) => {
   return (
@@ -45,15 +45,15 @@ const Card_info = ({ data }) => {
                     <p className="flex flex-row items-center gap-1">
                       {/* {data.instructorRating} */}
                       <span>
-                        {" "}
+                        {' '}
                         <AiFillStar className="text-yellow-300" />
                       </span>
                       {/* {data.totalReviews}{" "} */}
                     </p>
                     <p className="flex flex-row items-center gap-2">
-                      {" "}
+                      {' '}
                       <span>
-                        {" "}
+                        {' '}
                         <MdOutlinePlace />
                       </span>
                       {data.address}, Ok
@@ -63,9 +63,7 @@ const Card_info = ({ data }) => {
               </div>
               <div className="flex flex-row justify-between md:block md:text-end">
                 <p>Starting from:</p>
-                <h3 className="text-xl font-bold text-cyan-400">
-                  ${data.hourlyWage}/hr
-                </h3>
+                <h3 className="text-xl font-bold text-cyan-400">${data.hourlyWage}/hr</h3>
               </div>
             </div>
 

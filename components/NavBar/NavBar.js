@@ -5,11 +5,22 @@ import logo from '../../public/imgs/logo/logo-100.png';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Spinner from '../Spinner';
 import NotiBox from './NotiBox';
+import { useState } from 'react';
+import axios from 'axios';
+import { FcVideoCall } from 'react-icons/fc';
 
 const NavBar = () => {
   const { user, isLoading } = useUser();
+  const [userProfile, setUserProfile] = useState(null);
 
   if (isLoading) return <Spinner />;
+
+  (async function () {
+    if (user) {
+      const res = await axios.get(`/api/users/get-user-info?email=${user.email}`);
+      res.status === 200 && setUserProfile(res.data);
+    }
+  })();
 
   const navLinks = [
     {
@@ -33,8 +44,8 @@ const NavBar = () => {
       path: '/contact',
     },
     {
-      title:'Chats',
-      path:'/chat'
+      title: 'Chats',
+      path: '/chat',
     },
   ];
 
@@ -108,12 +119,29 @@ const NavBar = () => {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        {navLinks.map(({ title, path }, index) => (
-          <Link key={index} href={path} className="text-[1rem] hover:text-blue-500">
-            {title}
-          </Link>
-        ))}
+        {navLinks.map(({ title, path }, index) => {
+          if (!user && title === 'Chats') return null;
+
+          if (userProfile?.is_activated && title === 'Subscriptions') return null;
+
+          return (
+            <Link key={index} href={path} className="text-[1rem] hover:text-blue-500">
+              {title}
+            </Link>
+          );
+        })}
       </Navbar.Collapse>
+
+      {/* show video call btn if user signed in */}
+      {userProfile?.is_activated && (
+        <Link
+          className="fixed bottom-5 right-5 z-10 rounded-full bg-primary bg-opacity-50 p-2 shadow-lg transition-all duration-200 hover:bg-opacity-30"
+          href={process.env.NEXT_PUBLIC_VIDEO_CALL_URL}
+          target="_blank"
+        >
+          <FcVideoCall size={60} />
+        </Link>
+      )}
     </Navbar>
   );
 };

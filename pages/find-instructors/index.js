@@ -1,13 +1,13 @@
-import Layout from "../../components/Layout/Layout";
-import Card_info from "../../components/Find_instructors/Card_info";
-import { AiFillStar } from "react-icons/ai";
-import { useState, useEffect, use } from "react";
-import axios from "axios";
+import Layout from '../../components/Layout/Layout';
+import Card_info from '../../components/Find_instructors/Card_info';
+import { AiFillStar } from 'react-icons/ai';
+import { useState, useEffect, use } from 'react';
+import axios from 'axios';
 export const FindInstructors = ({ instructors }) => {
   const [allTutor, setAllTutor] = useState([]);
-  const [search, setSearch] = useState("");
-  const [selectRatingChange, setSlectRatingChange] = useState("0");
-  const [selectOption,setSelectOption]=useState("");
+  const [search, setSearch] = useState('');
+  const [selectRatingChange, setSlectRatingChange] = useState('0');
+  const [selectOption, setSelectOption] = useState('');
   useEffect(() => {
     setAllTutor(instructors);
   }, []);
@@ -20,32 +20,27 @@ export const FindInstructors = ({ instructors }) => {
         );
       })
     );
-  }, [search]);
-  useEffect(()=>{
-    console.log(selectRatingChange)
-      setAllTutor(
-        instructors.filter((data) =>data.rating>=selectRatingChange)
-      );
-  },[selectRatingChange])
-  useEffect(()=>{
-    const backupinstructors=instructors;
-    if(selectOption==="Price hight to low")
-    {
-      setAllTutor(
-        backupinstructors.sort(function(a, b) {
-          return b.hourlyWage - a.hourlyWage;
-        })
-      );
-    }
-    else if(selectOption==="Price low to hight")
-    {
-      setAllTutor(
-        backupinstructors.sort(function(a, b) {
-          return a.hourlyWage - b.hourlyWage;
-        })
-      );
-    }
-  },[selectOption])
+  }, [search, backupTutor]);
+
+  const handleClickFilter = () => {
+    setAllTutor(
+      backupTutor.filter((data) => {
+        if (startPrice == '' || endPrice == '') {
+          return data;
+          // (parseInt(data.hourlyWage) >=parseInt(startPrice) && parseInt(data.hourlyWage)<=parseInt(endPrice))
+          // &&
+          // data.bio.toLowerCase().includes(search.toLowerCase())
+        } else {
+          return (
+            parseInt(data.hourlyWage) >= parseInt(startPrice) &&
+            parseInt(data.hourlyWage) <= parseInt(endPrice)
+            // &&
+            // data.bio.toLowerCase().includes(search.toLowerCase())
+          );
+        }
+      })
+    );
+  };
   return (
     <Layout>
       <div className="bg-[#f7f8fc] py-2">
@@ -54,11 +49,15 @@ export const FindInstructors = ({ instructors }) => {
             <div className="mt-2 flex flex-col justify-between md:flex-row">
               <h3 className="text-2xl font-bold">{allTutor.length} search results found</h3>
               <div className="flex flex-row items-center justify-between gap-6">
-                <select className="border-0 p-2 text-xl"
-                 value={selectOption}
-                 onChange={(e)=>{setSelectOption(e.target.value)}}>
-                  <option value={"Price hight to low"} >Price hight to low</option>
-                  <option value={"Price low to hight"}>Price low to hight</option>
+                <select
+                  className="border-0 p-2 text-xl"
+                  value={selectOption}
+                  onChange={(e) => {
+                    setSelectOption(e.target.value);
+                  }}
+                >
+                  <option value={'Price hight to low'}>Price hight to low</option>
+                  <option value={'Price low to hight'}>Price low to hight</option>
                 </select>
                 <div className="flex flex-row gap-4">
                   <svg
@@ -110,7 +109,7 @@ export const FindInstructors = ({ instructors }) => {
                     />
                   </svg>
                   <input
-                    className="w-full border-none w-full"
+                    className="w-full w-full border-none"
                     type="text"
                     placeholder="What are you looking for?"
                     value={search}
@@ -155,6 +154,53 @@ export const FindInstructors = ({ instructors }) => {
               {/* <Sidebar /> */}
               <div className="p-5">
                 <div className="">
+                  {/* <div className="mt-6">
+          <details className="" open>
+            <summary className="text-xl font-bold">Subject & Level</summary>
+            <div className="mt-4">
+              <select className="w-full">
+                <option>ccxxxxxxxxx</option>
+                <option>ccxxxxxxxxx</option>
+                <option>ccxxxxxxxxx</option>
+              </select>
+            </div>
+          </details>
+        </div> */}
+                  {/* <div className="mt-6">
+                    <details className="" open>
+                      <summary className="text-xl font-bold">Price range</summary>
+                      <div className="mt-4 flex flex-row justify-between">
+                        <input
+                          type="text w-[40%]"
+                          defaultValue={0}
+                          value={startPrice}
+                          onChange={(e) => setStartPrice(e.target.value)}
+                          className="border border-black"
+                        />
+                        <input
+                          type="text w-[40%]"
+                          defaultValue={1000}
+                          value={endPrice}
+                          onChange={(e) => setEndPrice(e.target.value)}
+                          className="border border-black"
+                        />
+                      </div>
+                    </details>
+                  </div> */}
+
+                  {/* <div className="mt-6">
+                    <details className="" open>
+                      <summary className="text-xl font-bold">Gender</summary>
+                      <div className="mt-4 flex flex-row justify-between">
+                        <select className="w-full">
+                          <option>Both</option>
+                          <option>Male</option>
+                          <option>Female</option>
+                        </select>
+                      </div>
+                    </details>
+                  </div> */}
+
                   <div className="mt-6">
                     <details className="" open>
                       <summary className="text-xl font-bold">Rating</summary>
@@ -169,10 +215,7 @@ export const FindInstructors = ({ instructors }) => {
                               setSlectRatingChange(e.target.value);
                             }}
                           />
-                          <label
-                            htmlFor="rate5"
-                            className="flex flex-row gap-1"
-                          >
+                          <label htmlFor="rate5" className="flex flex-row gap-1">
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
@@ -191,10 +234,7 @@ export const FindInstructors = ({ instructors }) => {
                               setSlectRatingChange(e.target.value);
                             }}
                           />
-                          <label
-                            htmlFor="rate4"
-                            className="flex flex-row gap-1"
-                          >
+                          <label htmlFor="rate4" className="flex flex-row gap-1">
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
@@ -213,10 +253,7 @@ export const FindInstructors = ({ instructors }) => {
                               setSlectRatingChange(e.target.value);
                             }}
                           />
-                          <label
-                            htmlFor="rate3"
-                            className="flex flex-row gap-1"
-                          >
+                          <label htmlFor="rate3" className="flex flex-row gap-1">
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
@@ -235,10 +272,7 @@ export const FindInstructors = ({ instructors }) => {
                               setSlectRatingChange(e.target.value);
                             }}
                           />
-                          <label
-                            htmlFor="rate2"
-                            className="flex flex-row gap-1"
-                          >
+                          <label htmlFor="rate2" className="flex flex-row gap-1">
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />
@@ -257,10 +291,7 @@ export const FindInstructors = ({ instructors }) => {
                               setSlectRatingChange(e.target.value);
                             }}
                           />
-                          <label
-                            htmlFor="rate1"
-                            className="flex flex-row gap-1"
-                          >
+                          <label htmlFor="rate1" className="flex flex-row gap-1">
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />
@@ -282,13 +313,10 @@ export const FindInstructors = ({ instructors }) => {
                   </div> */}
                 </div>
               </div>
-              {/*  */}
             </div>
+
             <div className="w-full shadow-lg lg:w-[70%]">
-              {allTutor &&
-                allTutor.map((data, key) => (
-                  <Card_info data={data} key={key} />
-                ))}
+              {allTutor && allTutor.map((data, key) => <Card_info data={data} key={key} />)}
             </div>
           </div>
         </div>
@@ -298,9 +326,7 @@ export const FindInstructors = ({ instructors }) => {
 };
 
 export async function getServerSideProps() {
-  const instructors = await axios.get(
-    `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/instructors`
-  );
+  const instructors = await axios.get(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/instructors`);
   return {
     props: {
       instructors: instructors.data,
