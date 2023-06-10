@@ -34,6 +34,7 @@ const Messager = ({ param, userInfo, stateNewRoom }) => {
   const [getKeyuserParam, setGetKeyuserParam] = useState("");
   const [testMessage, setTestMessage] = useState([]);
   const containerRef = useRef();
+  console.log(inforParner)
   useEffect(() => {
     containerRef.current.scrollTop = containerRef.current.scrollHeight;
   }, [appearMessage]);
@@ -230,7 +231,7 @@ const Messager = ({ param, userInfo, stateNewRoom }) => {
   return (
     <div className="flex h-screen w-full flex-col p-2">
       <div className="flex flex-row shadow-lg">
-        {inforParner.picture ? (
+        {inforParner && inforParner.picture ? (
           <div className="w-20 rounded-full">
             <img src={inforParner.picture} />
           </div>
