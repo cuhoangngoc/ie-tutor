@@ -1,7 +1,7 @@
 import { Navbar } from 'flowbite-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from '../../public/imgs/logo/logo-100.png';
+import logo from '../../public/imgs/logo/IE Tutor.png';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Spinner from '../Spinner';
 import NotiBox from './NotiBox';
@@ -53,10 +53,8 @@ const NavBar = () => {
     <Navbar fluid={true} rounded={true} className="shadow-lg">
       <Link href="/" legacyBehavior>
         <a className="flex">
-          <Image src={logo} className="mr-3 w-16" alt="IE Tutor Logo" priority />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            IE Tutor
-          </span>
+          <Image src={logo} className="mr-3  w-11" alt="IE Tutor Logo" priority />
+          
         </a>
       </Link>
       <div className="flex md:order-2">
