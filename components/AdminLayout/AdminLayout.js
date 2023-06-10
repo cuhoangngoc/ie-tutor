@@ -24,7 +24,7 @@ const AdminLayout = ({ children, user }) => {
   }, [user.name]);
 
   function back() {
-    showErrorToast('You do not have permission to access this page! You will back after 5s')
+    showErrorToast('You do not have permission to access this page! You will be back after 5s')
     setTimeout(() => {
       router.back();
     }, 5000);

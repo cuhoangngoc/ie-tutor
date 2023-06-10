@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Allenimg from '../../public/imgs/home_page/CEO-Allen.png';
+import Allenimg from '../../public/imgs/home_page/pexels-julia-m-cameron-4145038.jpg'; // Import using relative path
 import Button_explore from './Button_explore';
 import dottedbg from "../../public/imgs/home_page/dotted-background.png"
 
@@ -27,7 +27,7 @@ const CEO_Allen = () => {
       </div>
 
       <div className=''>
-        <Image src={Allenimg} alt="Image" className='w-2/3 h-auto'/>
+        <Image src={Allenimg} alt="Image" className='w-3/3 h-auto'/>
       </div>
       
     </div>

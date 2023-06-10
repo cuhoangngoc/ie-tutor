@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import homeimg from '../../public/imgs/home_page/home-join.png';
+import homeimg from '../../public/imgs/home_page/homepage img.png';
 import GradientBtn from '../../components/HowItWork/GradientBtn';
 import Link from 'next/link';
 
