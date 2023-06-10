@@ -13,6 +13,8 @@ export default async function handler(req, res) {
             address: req.body.address,
             phone: req.body.phone,
             bio: req.body.bio,
+            picture: req.body.picture,
+            publicId: req.body.publicId,
           },
         }
       );

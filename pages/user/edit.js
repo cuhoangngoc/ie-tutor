@@ -1,56 +1,97 @@
 import Layout from '../../components/Layout/Layout';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { GrMailOption, GrHome, GrPhone } from 'react-icons/gr';
 import Button from '../../components/Button';
 import Editor from '../../components/Editor';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { SuccessToast } from '../../components/Toast';
+import { showSuccessToast } from '../../components/Toast';
 
 const Edit = ({ user }) => {
   const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')));
   const [address, setAddress] = useState(userInfo?.address);
   const [phone, setPhone] = useState(userInfo?.phone);
   const [bio, setBio] = useState(userInfo?.bio);
-
+  const [selectedImage, setSelectedImage] = useState(null);
   const router = useRouter();
 
+  const handleAvatarChange = (event) => {
+    setSelectedImage(event.target.files[0]);
+  };
+
   const handleClick = async () => {
+    let imageSrc = userInfo?.picture || null;
+    let public_id = userInfo?.publicId || '';
+
+    if (selectedImage) {
+      const formData = new FormData();
+      formData.append('file', selectedImage);
+      formData.append('upload_preset', 'logistie_avatar_uploads');
+
+      try {
+        const res = await axios.post(
+          `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUD_NAME}/image/upload`,
+          formData
+        );
+        const data = await res.data;
+        imageSrc = data.secure_url;
+        public_id = data.public_id;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
     const data = {
       address,
       phone,
       bio,
       email: user.email,
+      picture: imageSrc,
+      publicId: public_id,
     };
 
-    const res = await axios.post('/api/users/update-user-info', data);
+    try {
+      const res = await axios.post('/api/users/update-user-info', data);
 
-    if (res.status === 200) {
-      localStorage.setItem('userInfo', JSON.stringify(res.data));
-      setUserInfo(res.data);
+      if (res.status === 200) {
+        localStorage.setItem('userInfo', JSON.stringify(res.data));
+        setUserInfo(res.data);
 
-      // redirect to profile page with router
-      router.push('/user');
-      SuccessToast('Profile updated successfully!');
+        router.push('/user');
+        showSuccessToast('Profile updated successfully!');
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
     <Layout>
-      {/* Grid layout tỉ lệ 1:2 */}
       <div className="container relative mx-auto grid grid-cols-1 gap-4 lg:grid-cols-3">
         <div className="col-span-1 mt-16 w-full rounded-lg bg-white px-8 py-4 shadow-lg ring-1 dark:bg-gray-800">
           <div className="-mt-16 flex justify-center md:justify-start">
-            <Image
-              className="h-20 w-20 rounded-full border-2 object-cover"
-              src={user.picture}
-              alt={user.name}
-              width={100}
-              height={100}
-            />
+            <label className="cursor-pointer">
+              <input
+                type="file"
+                onChange={handleAvatarChange}
+                accept="image/*"
+                className="hidden"
+              />
+              {selectedImage ? (
+                <img
+                  className="h-20 w-20 rounded-full border-2 object-cover cursor-pointer"
+                  src={URL.createObjectURL(selectedImage)}
+                  alt={user.name}
+                />
+              ) : (
+                <img
+                  className="h-20 w-20 rounded-full border-2 object-cover cursor-pointer"
+                  src={userInfo?.picture}
+                  alt={user.name}
+                />
+              )}
+            </label>
           </div>
 
           <h2 className="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">
@@ -62,31 +103,25 @@ const Edit = ({ user }) => {
             <h1 className="px-2 text-sm"> {user.email}</h1>
           </div>
 
-          {/* Nếu có thông tin địa chỉ thì hiển thị */}
-          {userInfo?.address && (
-            <div className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-200">
-              <GrHome className="h-6 w-6 fill-current" />
-              <input
-                type="text"
-                className="max-w-[20rem] border-none px-2 text-sm"
-                defaultValue={userInfo?.address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </div>
-          )}
+          <div className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-200">
+            <GrHome className="h-6 w-6 fill-current" />
+            <input
+              type="text"
+              className="max-w-[20rem] border-none px-2 text-sm"
+              defaultValue={userInfo?.address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
 
-          {/* Nếu có thông tin số điện thoại thì hiển thị */}
-          {userInfo?.phone && (
-            <div className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-200">
-              <GrPhone className="h-6 w-6 fill-current" />
-              <input
-                type="text"
-                className="border-none px-2 text-sm"
-                defaultValue={userInfo?.phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
-          )}
+          <div className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-200">
+            <GrPhone className="h-6 w-6 fill-current" />
+            <input
+              type="text"
+              className="border-none px-2 text-sm"
+              defaultValue={userInfo?.phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
         </div>
 
         <div className="mt-16 w-full grow rounded-lg bg-white px-8 py-4 shadow-lg ring-1 dark:bg-gray-800 lg:col-span-2">

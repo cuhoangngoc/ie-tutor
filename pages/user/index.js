@@ -68,7 +68,7 @@ const User = ({ user }) => {
           <div className="-mt-16 flex justify-center md:justify-start">
             <Image
               className="h-20 w-20 rounded-full border-2 object-cover"
-              src={user.picture}
+              src={userInfo?.picture}
               alt={user.name}
               width={100}
               height={100}

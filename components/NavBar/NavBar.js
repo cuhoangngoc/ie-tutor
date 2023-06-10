@@ -66,8 +66,8 @@ const NavBar = () => {
               <Link href="/user">
                 <Image
                   alt=""
-                  className="rounded-full ring-1 ring-violet-400 ring-offset-4 ring-offset-gray-800 dark:bg-gray-500"
-                  src={user.picture}
+                  className="w-10 h-10 rounded-full ring-1 ring-violet-400 ring-offset-4 ring-offset-gray-800 dark:bg-gray-500"
+                  src={userProfile?.picture}
                   width={40}
                   height={40}
                 />
