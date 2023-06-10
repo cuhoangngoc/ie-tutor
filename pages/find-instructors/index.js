@@ -175,7 +175,7 @@ export const FindInstructors = ({ instructors }) => {
                               setSlectRatingChange(e.target.value);
                             }}
                           />
-                          <label htmlFor="rate5" className="flex flex-row gap-1">
+                          <label htmlFor="rate5" className="flex cursor-pointer flex-row gap-1">
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
@@ -194,7 +194,7 @@ export const FindInstructors = ({ instructors }) => {
                               setSlectRatingChange(e.target.value);
                             }}
                           />
-                          <label htmlFor="rate4" className="flex flex-row gap-1">
+                          <label htmlFor="rate4" className="flex cursor-pointer flex-row gap-1">
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
@@ -213,7 +213,7 @@ export const FindInstructors = ({ instructors }) => {
                               setSlectRatingChange(e.target.value);
                             }}
                           />
-                          <label htmlFor="rate3" className="flex flex-row gap-1">
+                          <label htmlFor="rate3" className="flex cursor-pointer flex-row gap-1">
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
@@ -232,7 +232,7 @@ export const FindInstructors = ({ instructors }) => {
                               setSlectRatingChange(e.target.value);
                             }}
                           />
-                          <label htmlFor="rate2" className="flex flex-row gap-1">
+                          <label htmlFor="rate2" className="flex cursor-pointer flex-row gap-1">
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />
@@ -251,7 +251,7 @@ export const FindInstructors = ({ instructors }) => {
                               setSlectRatingChange(e.target.value);
                             }}
                           />
-                          <label htmlFor="rate1" className="flex flex-row gap-1">
+                          <label htmlFor="rate1" className="flex cursor-pointer flex-row gap-1">
                             <AiFillStar className="h-6 w-6 text-yellow-300" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />
                             <AiFillStar className="h-6 w-6 text-gray-200" />

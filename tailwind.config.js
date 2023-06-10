@@ -9,11 +9,13 @@ module.exports = {
 
     // Or if using `src` directory:
     './src/**/*.{js,ts,jsx,tsx}',
+
+    'node_modules/preline/dist/*.js',
   ],
   theme: {
     extend: {},
   },
-  plugins: [require('daisyui'), require('flowbite/plugin')],
+  plugins: [require('daisyui'), require('flowbite/plugin'), require('preline/plugin')],
 
   daisyui: {
     styled: true,
