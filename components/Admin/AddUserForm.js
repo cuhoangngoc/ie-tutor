@@ -3,7 +3,7 @@ import React from 'react'
 const AddUserForm = () => {
 
     return (
-        <div>AddUserForm</div>
+        <div></div>
     )
 }
 

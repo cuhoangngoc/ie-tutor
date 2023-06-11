@@ -108,7 +108,7 @@ const ChartPlan = () => {
 
   return (
     <>
-      <div className="mt-10 my-5 pl-14 flex space-x-2">
+      <div className="pt-10 my-10 pl-14 flex space-x-2">
         <label htmlFor="monthSelect">From month:</label>
         <select
           id="monthSelect"

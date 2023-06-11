@@ -34,14 +34,7 @@ const Statictical = () => {
                             <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-gray-200">
                                 {countUsers.totalUsers}
                             </h3>
-                            <span class="flex items-center text-green-600">
-                                <svg class="inline-block w-7 h-7 self-center" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
-                                </svg>
-                                <span class="inline-block text-sm">
-                                    1.7%
-                                </span>
-                            </span>
+                            
                         </div>
                     </div>
                 </div>
