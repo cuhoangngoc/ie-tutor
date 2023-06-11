@@ -42,7 +42,7 @@ const subscriptions = () => {
                                     Email
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Type of plan
+                                    Type
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Duration
@@ -84,7 +84,7 @@ const subscriptions = () => {
                                         >
                                             {subscription.email}
                                         </td>
-                                        <td className="px-6 py-4">{subscription.planId}</td>
+                                        <td className="px-6 py-4">{subscription.type}</td>
                                         <td className="px-6 py-4">{subscription.duration}</td>
                                         <td className="px-6 py-4">{subscription.status}</td>
                                         <td className="px-6 py-4">{subscription.total} USD</td>

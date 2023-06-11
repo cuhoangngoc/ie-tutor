@@ -42,7 +42,7 @@ const ChartPlan = () => {
       const data = res.data;
 
       const chartData = data.map((plan) => plan.count); // Dữ liệu biểu đồ từ API
-      const chartLabels = data.map((plan) => plan.planId); // Nhãn cho các giá trị trong biểu đồ từ API
+      const chartLabels = data.map((plan) => plan.type); // Nhãn cho các giá trị trong biểu đồ từ API
 
       const chartConfig = {
         type: 'pie',
@@ -108,7 +108,7 @@ const ChartPlan = () => {
 
   return (
     <>
-      <div className="my-5 pl-14 flex space-x-2">
+      <div className="mt-10 my-5 pl-14 flex space-x-2">
         <label htmlFor="monthSelect">From month:</label>
         <select
           id="monthSelect"
