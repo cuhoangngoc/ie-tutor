@@ -19,7 +19,7 @@ const Subscriptions = ({ plans }) => {
 
     const payment = {
       user_id: user?.sub.split('|')[1],
-      plan_id: plan._id,
+      plan_id: plan.id,
       duration: plan.duration,
       price: plan.price,
       total: plan.price * plan.duration,
