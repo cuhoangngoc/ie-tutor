@@ -28,7 +28,7 @@ const CARD_OPTIONS = {
   },
 };
 
-const PaymentForm = ({ paymentInfo: { user_id, price, plan_id, duration, total } }) => {
+const PaymentForm = ({ paymentInfo: { user_id, price, plan_id, duration, total, type } }) => {
   const router = useRouter();
   const stripe = useStripe();
   const elements = useElements();
@@ -62,6 +62,7 @@ const PaymentForm = ({ paymentInfo: { user_id, price, plan_id, duration, total }
             duration: duration,
             total: total,
             paymentMethodId: id,
+            type: type,
           }
         );
 
