@@ -10,7 +10,7 @@ const RejectRequest = () => {
         const res = await axios.delete(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/role-requests/${id}`);
 
         if (res.status !== 200) {
-            showErrorToast('Reject failly');
+            showErrorToast('Reject fail');
             return;
         }
 
