@@ -49,8 +49,8 @@ export default class UserScheduler extends React.PureComponent {
     super(props);
 
     this.state = {
-      data: props.appointments,
-      currentViewName: 'Month',
+      data: props.bookings,
+      currentViewName: 'Week',
     };
 
     this.currentViewNameChange = (e) => {
@@ -70,7 +70,7 @@ export default class UserScheduler extends React.PureComponent {
 
         <Paper>
           <Scheduler data={data}>
-            <ViewState defaultCurrentDate="2018-07-25" currentViewName={currentViewName} />
+            <ViewState currentViewName={currentViewName} />
             <WeekView startDayHour={7} endDayHour={19} />
             {/* <WeekView
               name="Work Week"
@@ -81,7 +81,7 @@ export default class UserScheduler extends React.PureComponent {
             <MonthView />
 
             <Appointments appointmentComponent={Appointment} />
-            <AppointmentTooltip />
+            <AppointmentTooltip showCloseButton />
 
             <Toolbar />
             <DateNavigator />

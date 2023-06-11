@@ -8,7 +8,7 @@ const Card_info = ({ data }) => {
   return (
     <div>
       <div className="mt-4 flex flex-col gap-4 rounded-md bg-white p-4 shadow-lg md:flex-row ">
-        <Link className="max-h-[200px] w-full md:w-[50%]" href={`/find-instructors/${data.email}`}>
+        <Link className="" href={`/find-instructors/${data.email}`}>
           <Image
             src={data.picture}
             className="h-full w-full rounded-md object-cover"
@@ -64,10 +64,10 @@ const Card_info = ({ data }) => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-row justify-between md:block md:text-end">
+            {/* <div className="flex flex-row justify-between md:block md:text-end">
               <p>Starting from:</p>
               <h3 className="text-xl font-bold text-cyan-400">${data.hourlyWage}/hr</h3>
-            </div>
+            </div> */}
           </div>
 
           <div className="mt-4 max-h-20 overflow-y-auto">

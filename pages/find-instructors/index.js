@@ -21,26 +21,28 @@ export const FindInstructors = ({ instructors }) => {
       })
     );
   }, [search, instructors]);
+
   useEffect(() => {
     console.log(selectRatingChange);
     setAllTutor(instructors.filter((data) => data.rating >= selectRatingChange));
   }, [selectRatingChange, instructors]);
-  useEffect(() => {
-    const backupinstructors = instructors;
-    if (selectOption === 'Price hight to low') {
-      setAllTutor(
-        backupinstructors.sort(function (a, b) {
-          return b.hourlyWage - a.hourlyWage;
-        })
-      );
-    } else if (selectOption === 'Price low to hight') {
-      setAllTutor(
-        backupinstructors.sort(function (a, b) {
-          return a.hourlyWage - b.hourlyWage;
-        })
-      );
-    }
-  }, [selectOption, instructors]);
+
+  // useEffect(() => {
+  //   const backupinstructors = instructors;
+  //   if (selectOption === 'Price hight to low') {
+  //     setAllTutor(
+  //       backupinstructors.sort(function (a, b) {
+  //         return b.hourlyWage - a.hourlyWage;
+  //       })
+  //     );
+  //   } else if (selectOption === 'Price low to hight') {
+  //     setAllTutor(
+  //       backupinstructors.sort(function (a, b) {
+  //         return a.hourlyWage - b.hourlyWage;
+  //       })
+  //     );
+  //   }
+  // }, [selectOption, instructors]);
 
   const resetFilter = () => {
     setAllTutor(instructors);
@@ -56,7 +58,7 @@ export const FindInstructors = ({ instructors }) => {
             <div className="mt-2 flex flex-col justify-between md:flex-row">
               <h3 className="text-2xl font-bold">{allTutor.length} search results found</h3>
               <div className="flex flex-row items-center justify-between gap-6">
-                <select
+                {/* <select
                   className="border-0 p-2 text-xl"
                   value={selectOption}
                   onChange={(e) => {
@@ -65,7 +67,7 @@ export const FindInstructors = ({ instructors }) => {
                 >
                   <option value={'Price hight to low'}>Price hight to low</option>
                   <option value={'Price low to hight'}>Price low to hight</option>
-                </select>
+                </select> */}
                 <div className="flex flex-row gap-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

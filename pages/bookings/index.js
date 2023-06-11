@@ -172,14 +172,6 @@ const Bookings = ({ user, userProfile, bookings }) => {
 };
 
 export async function getServerSideProps(context) {
-  // if (!context.req.cookies.appSession)
-  //   return {
-  //     redirect: {
-  //       destination: '/',
-  //       permanent: false,
-  //     },
-  //   };
-
   const session = await getSession(context.req, context.res);
   const user = session.user;
 
