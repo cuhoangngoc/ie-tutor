@@ -6,7 +6,7 @@ import { GrMailOption, GrHome, GrPhone } from 'react-icons/gr';
 import Button from '../../components/Button';
 import Editor from '../../components/Editor';
 import { useRouter } from 'next/router';
-import { showSuccessToast } from '../../components/Toast';
+import { showErrorToast, showSuccessToast } from '../../components/Toast';
 
 const Edit = ({ user }) => {
   const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')));
@@ -20,7 +20,18 @@ const Edit = ({ user }) => {
     setSelectedImage(event.target.files[0]);
   };
 
+  const validatePhone = (event) => {
+    // validate phone number, accept number only, if not number then don't accept and don't show on input
+    event.target.value = event.target.value.replace(/[^\d]/, '');
+  };
+
   const handleClick = async () => {
+    // validate phone number
+    if (phone && !phone.match(/^\d{10}$/)) {
+      showErrorToast('Invalid phone number!');
+      return;
+    }
+
     let imageSrc = userInfo?.picture || null;
     let public_id = userInfo?.publicId || '';
 
@@ -80,13 +91,13 @@ const Edit = ({ user }) => {
               />
               {selectedImage ? (
                 <img
-                  className="h-20 w-20 rounded-full border-2 object-cover cursor-pointer"
+                  className="h-20 w-20 cursor-pointer rounded-full border-2 object-cover"
                   src={URL.createObjectURL(selectedImage)}
                   alt={user.name}
                 />
               ) : (
                 <img
-                  className="h-20 w-20 rounded-full border-2 object-cover cursor-pointer"
+                  className="h-20 w-20 cursor-pointer rounded-full border-2 object-cover"
                   src={userInfo?.picture}
                   alt={user.name}
                 />
@@ -120,6 +131,7 @@ const Edit = ({ user }) => {
               className="border-none px-2 text-sm"
               defaultValue={userInfo?.phone}
               onChange={(e) => setPhone(e.target.value)}
+              onInput={validatePhone}
             />
           </div>
         </div>

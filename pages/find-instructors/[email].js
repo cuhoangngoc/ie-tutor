@@ -112,7 +112,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       insProfile: insProfile.data,
-      insRating: insRating.data.averageRating,
+      insRating: insRating.data.averageRating ?? 0,
       reviews: insRating.data.reviews,
       bookings: bookings.data,
     },
