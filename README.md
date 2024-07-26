@@ -62,6 +62,6 @@ Ngoc Cu Hoang - ngoccuhoang@outlook.com
 
 Discover additional API endpoints for this user interface, implemented using **Spring Boot**, at [API endpoints](https://github.com/cuhoangngoc/ietutor-api).
 
-Access the video call interface [API endpoints](https://1d85484b975c9dc8817d.vercel.app). 
+Access the video call interface [here](https://1d85484b975c9dc8817d.vercel.app). 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
